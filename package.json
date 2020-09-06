@@ -1,0 +1,49 @@
+{
+  "name": "React-Avanzado",
+  "version": "1.0.0",
+  "description": "Curso Avanzado de React con Platzi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server",
+    "lint": "standard",
+    "vercel-build": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresmorenoj/React-Avanzado.git"
+  },
+  "keywords": [],
+  "author": "Andres Moreno <andresmorenojf@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andresmorenoj/React-Avanzado/issues"
+  },
+  "homepage": "https://github.com/andresmorenoj/React-Avanzado#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.4.1",
+    "standard": "^14.3.4",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "standard": {
+    "ignore": [
+      "/api/**"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
+  }
+}
