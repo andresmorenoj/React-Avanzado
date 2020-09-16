@@ -1,4 +1,4 @@
-import React, {frameElement, useState, useEffect} from 'react'
+import React, {Fragment, useState, useEffect} from 'react'
 import { Category } from '../Category'
 import { List, Item } from './styles'
 
@@ -42,10 +42,10 @@ export const ListOfCategories = () => {
   )
 
   return (
-    <frameElement>
+    <Fragment>
       {renderList()}
       {showFixed && renderList(true)}
-    </frameElement>
+    </Fragment>
   
   )
 }
