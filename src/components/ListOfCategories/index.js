@@ -24,7 +24,7 @@ export const ListOfCategories = () => {
   useEffect(function(){
     const onScroll = e => {
       const newShowFixed = window.scrollY > 200
-      showFixed !== newShowFixed  && setShowFixed(newShowFixed)
+      showFixed !== newShowFixed && setShowFixed(newShowFixed)
     }
 
     document.addEventListener('scroll', onScroll)
@@ -36,7 +36,7 @@ export const ListOfCategories = () => {
     <List fixed={fixed}>
       {
         loading ? <Item key='loading'><Category/></Item>
-        : categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
+        : categories.map(category => <Item key={category.id}><Category {...category} path={`/pet/${category.id}`}/></Item>)
       }
     </List>
   )
