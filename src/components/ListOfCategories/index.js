@@ -1,27 +1,30 @@
-import React, {Fragment, useState, useEffect} from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Category } from '../Category'
+
 import { List, Item } from './styles'
 
-function useCategoriesData() {
+function useCategoriesData () {
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(false)
 
-  useEffect(function(){
+  useEffect(function () {
     setLoading(true)
-    fetch('https://petgram-server-opal.vercel.app/categories')
+    window.fetch('https://petgram-server.midudev.now.sh/categories')
       .then(res => res.json())
-      .then(response => setCategories(response))
-      setLoading(false)
-  },[])
+      .then(response => {
+        setCategories(response)
+        setLoading(false)
+      })
+  }, [])
 
-  return {categories, loading}
+  return { categories, loading }
 }
 
-export const ListOfCategories = () => {
-  const {categories, loading} = useCategoriesData()
+const ListOfCategoriesComponent = () => {
+  const { categories, loading } = useCategoriesData()
   const [showFixed, setShowFixed] = useState(false)
 
-  useEffect(function(){
+  useEffect(function () {
     const onScroll = e => {
       const newShowFixed = window.scrollY > 200
       showFixed !== newShowFixed && setShowFixed(newShowFixed)
@@ -35,8 +38,9 @@ export const ListOfCategories = () => {
   const renderList = (fixed) => (
     <List fixed={fixed}>
       {
-        loading ? <Item key='loading'><Category/></Item>
-        : categories.map(category => <Item key={category.id}><Category {...category} path={`/pet/${category.id}`}/></Item>)
+        loading
+          ? <Item key='loading'><Category /></Item>
+          : categories.map(category => <Item key={category.id}><Category {...category} path={`/pet/${category.id}`} /></Item>)
       }
     </List>
   )
@@ -46,6 +50,7 @@ export const ListOfCategories = () => {
       {renderList()}
       {showFixed && renderList(true)}
     </Fragment>
-  
   )
 }
+
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)
